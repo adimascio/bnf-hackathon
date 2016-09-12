@@ -91,7 +91,7 @@ function Items({ loaded, items }) {
 ```
 
 ### Connect this component to the sparql query:
-```
+```javascript
 import { sparqlConnect } from '../sparql/configure-sparql'
 (...)
 //we use the name of the
@@ -103,7 +103,7 @@ export default sparqlConnect.levelItems(Items)
 
 To make this component work as a main component for a route, you can expend the previous `export` to:
 
-```
+```javascript
 import { connectFromRoute } from '../routes'
 
 export default connectFromRoute(
