@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?><OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd"><responseDate>2016-11-19T09:43:59Z</responseDate><request verb="GetRecord" metadataPrefix="oai_dc" identifier="oai:bnf.fr:catalogue/ark:/12148/cb41026403m">http://catoai.bnf.fr/oai2/OAIHandler</request><GetRecord><record><header><identifier>oai:bnf.fr:catalogue/ark:/12148/cb41026403m</identifier><datestamp>2015-01-24</datestamp><setSpec>catalogue:archives:articles</setSpec><setSpec>catalogue:collections:musique</setSpec><setSpec>catalogue:collections:reproduction</setSpec></header><metadata><oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+<dc:identifier>http://catalogue.bnf.fr/ark:/12148/cb41026403m</dc:identifier>
+<dc:title>Louis Emié // D'un noir bûcher // (première version) // 1965</dc:title>
+<dc:creator>Émié, Louis (1900-1967). Auteur du texte</dc:creator>
+<dc:description>Ancien possesseur : Sauguet, Henri (1901-1989)</dc:description>
+<dc:date>1965</dc:date>
+<dc:format>[1, 12] f. ; 27 x 21 cm + 1 f.</dc:format>
+<dc:type xml:lang="fre">manuscrit moderne ou document d'archive</dc:type>
+<dc:type xml:lang="eng">modern manuscript or archive</dc:type>
+<dc:type xml:lang="eng">text</dc:type>
+<dc:rights xml:lang="fre">Catalogue en ligne de la Bibliothèque nationale de France</dc:rights>
+<dc:rights xml:lang="eng">French National Library online Catalog</dc:rights>
+</oai_dc:dc></metadata></record></GetRecord></OAI-PMH>

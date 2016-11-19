@@ -1,50 +1,40 @@
 import queries from './queries'
 
 const {
-  classifications,
-  classificationDetails
+  authors,
+  editionDetails
 } = queries
 
 export default {
-  classifications: {
-    descr: 'Retrieve all the classifications',
-    //a component connected to this query will receive `classifications` in
-    //its props; `classifications` will be an array with the results of the
-    //query; each row in this array will be an object with two properties (see
-    //below)
-    whatWeGet: 'classifications',
-    //describe a row in the result set; each row in the results will be an
-    //object with two properties: `classification` and `label`; it should match 
-    //variable names in the sparql-query (not all the variables in the query
-    //need to be represented here, only the one we interested in).
-    results: {
-      classification: 'classification (uri)',
-      label: 'classification label'
-    },
-    //the query takes no param, that means we do not have expectation on what
-    //the components props contain (it is because the sparql query does not
-    //need any param)
+  authors: {
+    descr: 'Retrieve a list of authors',
+    whatWeGet: 'authors',
     params: [],
-    //reference the query builder function
-    queryBuilder: classifications
+    results: {
+      author: 'author (uri)',
+      name: 'name of the author',
+      placeOfBirth: 'author place of birth',
+      placeOfDeath: 'author place of death',
+      thumbnail: 'url of thumbnail'
+    },
+    queryBuilder: authors
   },
-  classificationDetails: {
-    descr: 'Retrieve details (depth and label) for a given classification',
-    //`singleResult` is set to true: 
-    //- an error will be raised if there is no result or more than one result
-    //- results will be an object with the variable names described in
-    //`results` as properties; no need for `whatWeGet`
+  editionDetails: {
+    descr: 'details about an edition (manifestation)',
     singleResult: true,
-    //the query takes one param; we give it the name `classification`; that
-    //means that a component connected to this query will have to be passed
-    //a prop with the prop name `classification`.
     params: [{
-      name: 'classification',
-      descr: 'classification (uri)'
+      name: 'edition',
+      descr: 'edition'
     }],
     results: {
-      label: 'classification label (string)',
+      title: 'dcterms:title',
+      date: 'dcterms:date',
+      description: 'dcterms:description',
+      publisher: 'dcterms:publisher',
+      isbn: 'bnf-onto:isbn',
+      gallicaRef: 'link to gallica web page (optional)'
     },
-    queryBuilder: classificationDetails
+    queryBuilder: editionDetails
   }
 }
+

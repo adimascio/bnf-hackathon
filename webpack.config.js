@@ -1,6 +1,8 @@
 var webpack = require('webpack');
-var precss = require('precss');
 var autoprefixer = require('autoprefixer');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+var TransferWebpackPlugin = require('transfer-webpack-plugin');
+var path = require('path');
 
 module.exports = {
   entry: [
@@ -15,7 +17,10 @@ module.exports = {
   module: {
     loaders: [
       //{ test: /\.css$/, loader: 'style-loader!css-loader?sourceMap' },
-      { test: /\.css$/, loader: 'style-loader!css-loader!postcss-loader?sourceMap' },
+      { 
+        test: /(\.scss|\.css)$/,
+        loader: ExtractTextPlugin.extract('style', 'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass')
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -23,19 +28,31 @@ module.exports = {
         loader: ['babel'],
         query: {
           'presets': ['react', 'es2015'],
-          'plugins': ['transform-object-rest-spread', 'import-asserts']
+          'plugins': ['transform-object-rest-spread'], //, 'import-asserts']
         }
       }
     ]
   },
-  postcss: function () {
-    return [precss, autoprefixer({ browsers: ['> 5%'] })]
-  },  
+  postcss: [autoprefixer],
+  sassLoader: {
+    data: '@import "theme/_config.scss";',
+    includePaths: [path.resolve(__dirname, './src')]
+  },
+  
+  plugins: [
+    new ExtractTextPlugin('bundle.css', { allChunks: true }),
+    new TransferWebpackPlugin([
+        { from: 'img', to: 'img' }
+    ], path.join(__dirname, 'src'))
+  ],
   resolve: {
-    extensions: ['', '.js']
+    extensions: ['', '.scss', '.js'],
+    alias: {
+      'sparql-connect': '/Users/jb/Documents/noknot/modernstats/sparql-connect/'
+    }
   },
   output: {
     path: __dirname + '/dist',
-    filename: './js/starter-kit.js'
+    filename: './js/bundle.js'
   }
 }
