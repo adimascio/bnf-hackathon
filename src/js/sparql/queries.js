@@ -1,5 +1,5 @@
 /**
- * Builds the query that retrieve the list of all classifications.
+ * Builds the query that retrieve the list of all authors.
  */
 const authors = () => `
   PREFIX bio: <http://vocab.org/bio/0.1/>
@@ -21,7 +21,29 @@ const authors = () => `
   # GROUP BY ?author ?name ?placeOfBirth ?placeOfDeath
   LIMIT 10
  `
-
+ 
+/** 
+ * Builds the query that retrieve an author details 
+ */ 
+const authorDetails = author => ` 
+  PREFIX bio: <http://vocab.org/bio/0.1/> 
+  PREFIX foaf: <http://xmlns.com/foaf/0.1/> 
+  PREFIX rdgroup2elements: <http://rdvocab.info/ElementsGr2/> 
+   
+  SELECT ?name ?placeOfBirth ?placeOfDeath ?dateOfBirth ?dateOfDeath ?thumbnail 
+  WHERE { 
+    <${author}> 
+      foaf:name ?name ; 
+      rdagroup2elements:dateOfBirth ?dateOfBirth ; 
+      rdagroup2elements:dateOfDeath ?dateOfDeath ; 
+      rdagroup2elements:placeOfBirth ?placeOfBirth ; 
+      rdagroup2elements:placeOfDeath ?placeOfDeath ; 
+      foaf:depiction ?thumbnail . 
+      FILTER (regex(str(?thumbnail), "wikimedia.org.*width"))
+  } 
+  LIMIT 1
+ ` 
+   
 //edition: http://data.bnf.fr/ark:/12148/cb35768505j
 //gallicaRef: http://gallica.bnf.fr/ark:/12148/bpt6k1647421
 const editionDetails = edition => `
@@ -59,6 +81,7 @@ SELECT ?ref {
  
 export default {
   authors,
+  authorDetails,
   editionDetails,
   editionOtherReferences
 }

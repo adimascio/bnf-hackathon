@@ -15,6 +15,9 @@ import AuthorDetails from './author-details'
 import AuthorNotFound from './author-not-found'
 import Edition from './edition'
 import EditionDetails from './edition-details'
+import Redden from './redden'
+import CorpusPicker from './corpus-picker'
+import Visualisation from './visualisation'
 
 //We need to create a store. `configureStore` add a little extra config to 
 //allow to work with asyncrhonous actions and to use the redux dev tools.
@@ -28,12 +31,9 @@ export default class Root extends Component {
           <Route path="/" component={App}>
             {/* default component if the route does not match any over
                 route */}
-            <IndexRoute component={Authors} />
-            <Route path="author">
-              <IndexRoute component={AuthorNotFound} />
-              <Route path=":authority/:name" component={AuthorDetails} />
+            <IndexRoute component={CorpusPicker} />
+            <Route path=":corpusId" component={Visualisation}>
             </Route>
-            <Route path="edition/:authority/:name" component={EditionDetails} />
           </Route>
         </Router>
       </Provider>

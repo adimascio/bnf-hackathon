@@ -18,8 +18,16 @@ var optionsOAI = {
   onProxyRes: res => res.headers['Access-Control-Allow-Origin'] = '*'
 }
 
+var optionsTEI = {
+  target: 'http://localhost:9000',
+  //pathRewrite: () => 'oai.xml',
+  changeOrigin: true,
+  onProxyRes: res => res.headers['Access-Control-Allow-Origin'] = '*'
+}
+
 app.use('/gallica', proxy(optionsGallica))
 app.use('/oai', proxy(optionsOAI))
+app.use('/tei', proxy(optionsTEI))
 
 app.listen(3000);
  

@@ -2,9 +2,11 @@
 import { enhanceReducer } from '../sparql/configure-sparql'
 import { combineReducers } from 'redux'
 import gallica from './gallica'
+import tei from './tei'
 
 const mainReducer = combineReducers({
-  gallica
+  gallica,
+  tei
 })
 export default enhanceReducer(mainReducer)
 

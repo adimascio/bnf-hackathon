@@ -40,10 +40,10 @@ module.exports = {
   },
   
   plugins: [
-    new ExtractTextPlugin('bundle.css', { allChunks: true }),
-    new TransferWebpackPlugin([
-        { from: 'img', to: 'img' }
-    ], path.join(__dirname, 'src'))
+    new ExtractTextPlugin('bundle.css', { allChunks: true })
+    // new TransferWebpackPlugin([
+    //     { from: 'tei_sample', to: 'tei_sample' }
+    // ], path.join(__dirname, 'src'))
   ],
   resolve: {
     extensions: ['', '.scss', '.js'],

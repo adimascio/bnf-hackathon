@@ -8,6 +8,16 @@ and unique identifiers (most of the time URI).
 const bnfPrefix = 'http://data.bnf.fr/ark:/'
 
 const routes = {
+  redden: {
+    pattern: 'redden',
+    paramsToProps: () => ({})
+  },
+  visualisation: {
+    pattern: ':corpusId',
+    paramsToProps: (state, { corpusId }) => ({
+      corpusId
+    })
+  },
   editionDetails: {
     pattern: 'edition/:authority/:name',
     paramsToProps: (state, { authority, name }) => ({

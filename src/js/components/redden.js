@@ -7,18 +7,23 @@ import { Button } from 'react-toolbox/lib/button'; // Bundled component import
 import {
   List, ListItem, ListSubHeader, ListDivider, ListCheckbox
 } from 'react-toolbox/lib/list'
-import AuthorItem from './author-item'
 
-function Authors({ authors }) {
+function Authors({ loaded, authors }) {
+  if (loaded !== LOADED) return <span>authors are loading</span>
   return (
     <section style={{ padding: 40 }}>
       <List selectable ripple>
         <ListSubHeader caption="Explore authors" />
-        { authors.map(({ count, uri }) => 
-            <AuthorItem author={uri} count={count} />) }
+        { authors.map(({ author, name, placeOfBirth, thumbnail }) =>
+        <ListItem key={author}
+          avatar={thumbnail}
+          rightIcon="star"
+          caption={name}
+          legend={placeOfBirth} />
+      )}
     </List>
     </section>
   )
 }
 
-export default Authors
+export default sparqlConnect.authors(Authors)

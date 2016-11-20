@@ -2,7 +2,8 @@ import queries from './queries'
 
 const {
   authors,
-  editionDetails
+  editionDetails,
+  authorDetails
 } = queries
 
 export default {
@@ -13,12 +14,30 @@ export default {
     results: {
       author: 'author (uri)',
       name: 'name of the author',
+      dateOfBirth: 'date of birth',
+      dateOfDeath: 'date of death',
       placeOfBirth: 'author place of birth',
       placeOfDeath: 'author place of death',
       thumbnail: 'url of thumbnail'
     },
     queryBuilder: authors
   },
+  authorDetails: { 
+  descr: 'Retrieve details for an author', 
+  singleResult: true, 
+  params: [{ 
+    name: 'author' 
+  }], 
+  results: { 
+    name: 'name of the author', 
+    dateOfBirth: 'date of birth',
+    dateOfDeath: 'date of death',
+    placeOfBirth: 'author place of birth', 
+    placeOfDeath: 'author place of death', 
+    thumbnail: 'url of thumbnail' 
+  }, 
+  queryBuilder: authorDetails 
+}, 
   editionDetails: {
     descr: 'details about an edition (manifestation)',
     singleResult: true,
